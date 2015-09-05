@@ -41,7 +41,7 @@ stream.on('data', function(tap) {
 	else if (tap.ok   ===  true  ) sumP++, res[tap.test] += '\x1b[32m·'
 	else if (tap.error) {
 		res[tap.test] += color('x','red')
-		var operator = tap.actual ? tap.actual+' === '+tap.expected : tap.operator
+		var operator = tap.actual ? JSON.stringify(tap.actual)+' === '+JSON.stringify(tap.expected) : tap.operator
 		allE.push(pad8(tap.test)+'.'+tap.id+' - '+color(operator , 'red')+ ' : '+tap.error.message)
 	}
 	else console.log ('unknown tap result : ', tap)
