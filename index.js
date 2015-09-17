@@ -1,4 +1,27 @@
 var test = require('tape')
+
+test.Test.prototype.closeTo =
+test.Test.prototype.approxEqual = function (a, b, d, msg, extra) {
+    this._assert(Math.abs(a-b) <= Math.abs(d), {
+        message : msg ? msg : 'should be approx. equal +/-'+d,
+        operator : 'approxEqual',
+        actual : a,
+        expected : b,
+        extra : extra
+    });
+};
+
+test.Test.prototype.notCloseTo =
+test.Test.prototype.notApproxEqual = function (a, b, d, msg, extra) {
+    this._assert(Math.abs(a-b) <= Math.abs(d), {
+        message : msg ? msg : 'should not be approx. equal +/-'+d,
+        operator : 'notApproxEqual',
+        actual : a,
+        notExpected : b,
+        extra : extra
+    });
+};
+
 var stream = test.createStream({objectMode: true})
 var path = require('path')
 
@@ -27,6 +50,23 @@ var sumP = 0
 var sumS = 0
 var allE = []
 
+function formatError(tap) {
+	switch (tap.operator) {
+		case 'equal': return JSON.stringify(tap.actual)+' === '+JSON.stringify(tap.expected)
+		case 'notEqual': return JSON.stringify(tap.actual)+' !== '+JSON.stringify(tap.notExpected)
+
+		case 'deepEqual': return JSON.stringify(tap.actual)+' {===} '+JSON.stringify(tap.expected)
+		case 'notDeepEqual': return JSON.stringify(tap.actual)+' {!==} '+JSON.stringify(tap.notExpected)
+
+		case 'deepLooseEqual': return JSON.stringify(tap.actual)+' {==} '+JSON.stringify(tap.expected)
+		case 'notDeepLooseEqual': return JSON.stringify(tap.actual)+' {!=} '+JSON.stringify(tap.notExpected) //PR?
+
+		case 'approxEqual': return JSON.stringify(tap.actual)+' =~ '+JSON.stringify(tap.expected)
+		case '': return tap.operator
+		default: tap.operator
+	}
+}
+
 
 stream.on('data', function(tap) {
 	if (typeof tap   === 'string') console.log('comment: ' + tap)
@@ -41,8 +81,7 @@ stream.on('data', function(tap) {
 	else if (tap.ok   ===  true  ) sumP++, res[tap.test] += '\x1b[32m·'
 	else if (tap.error) {
 		res[tap.test] += color('x','red')
-		var operator = tap.actual ? JSON.stringify(tap.actual)+' === '+JSON.stringify(tap.expected) : tap.operator
-		allE.push(pad8(tap.test)+'.'+tap.id+' - '+color(operator , 'red')+ ' : '+tap.error.message)
+		allE.push(pad8('#'+tap.test)+'.'+tap.id+' - '+color(formatError(tap) , 'red')+ ' : '+tap.error.message)
 	}
 	else console.log ('unknown tap result : ', tap)
 });
