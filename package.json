@@ -1,29 +1,43 @@
 {
-  "name": "short-tape",
+  "name": "untap",
   "version": "0.0.1",
-  "description": "TODO",
-  "keywords": [],
+  "description": "shrinks and paints tap test output",
+  "keywords": [
+    "unit test",
+    "test",
+    "tape",
+    "reporter",
+    "tap",
+    "tt"
+  ],
   "author": "Hugo Villeneuve",
-  "license": "unlicensed",
-  "private": true,
+  "license": "MIT",
+  "private": false,
   "repository": {
     "type": "git",
-    "url": "TODO"
+    "url": "https://github.com/hville/untap.git"
   },
   "main": "./index.js",
   "files": [
     "./index.js"
   ],
   "dependencies": {
-    "tape": "4.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "tape": "4.2.2",
+    "tt": "1.0.3"
+  },
   "engines": {
     "node": ">= 0.10.0",
     "npm": "2.x"
   },
+	"bin": {
+    "untap": "./cli.js"
+  },
   "scripts": {
-    "test": "node ./test.js",
-		"testFile": "tape"
+    "test": "npm run tape && npm run tt",
+    "tape": "tape test/tape.js | node ./cli.js",
+    "tt": "tape test/tt.js | node ./cli.js",
+    "all": "tape test/**/*.js | node ./cli.js"
   }
 }

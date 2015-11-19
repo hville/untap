@@ -1,4 +1,4 @@
-# TODO
+# sum-product
 
 1. [Introduction](#introduction)
 1. [Installation](#installation)
@@ -7,46 +7,42 @@
 1. [License](#license)
 
 
-
 ## Introduction
 
-From [link title TODO](https://link.url.com/TODO)
-* yes
-* no
-*9x9 Sudoku*
-_patate_
-^patate^
-~patate~
-**patate**
-
+shrinks and paints TAP test output
+* Strips out the good news (ok...) and most of the extra line feeds
+* Highlights the bad news in red (not ok...)
+* Adds a one-line summary showing all passed, failed and skipped tests (eg. Summary: ..sx..x.)
 
 
 ## Installation
 
-In node, from the root of your project folder type `npm install --save TODO`.
+In node, from the project root folder type `npm install --save untap`.
+You also need a testing library that produces TAP output (eg. tape, tt, tap)
 
 
+## Usage
 
-## usage
+The main intended use case is for npm scripts in local installations.
 
-TODO text
-The options *id*, *title*, *description*, , and  can't be guessed from a sample object and must be defined manually in options (Object: *oneOf*, *patternProperties*, *additionalProperties*, *required*)
+inside the package.json file:
+```
+  "scripts": {
+    "test": "npm run tape && npm run tt",
+    "tape": "tape test/tape.js | untap",
+    "tt": "node test/tt.js | untap",
+    "all": "tape test/**/*.js | untap"
+  }
+```
 
-###Default
-$schema = http://json-schema.org/schema#
-JSON Schema written against the current version of the specification
-
-	var TODO = require('TODO')
-
+at the command line type `npm test` or `npm run all`
 
 
 ## Test
 
-The test are not included in the npm package and must be cloned from the repository.
-In node, from the root of the module folder type `npm test`.
-
+In node, from the project root type `npm test`. The tests are only visual to see that the output is as intended.
 
 
 ## License
 
-Released under the [MITODO License](http://www.opensource.org/licenses/MITODO)
+Released under the [MIT License](http://www.opensource.org/licenses/MIT)
