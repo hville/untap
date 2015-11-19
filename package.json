@@ -1,6 +1,6 @@
 {
   "name": "untap",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "shrinks and paints tap test output",
   "keywords": [
     "unit test",
@@ -19,7 +19,8 @@
   },
   "main": "./index.js",
   "files": [
-    "./index.js"
+    "./index.js",
+		"./cli.js"
   ],
   "dependencies": {
   },
