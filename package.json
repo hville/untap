@@ -1,40 +1,43 @@
 {
-  "name": "untap",
-  "version": "0.0.4",
-  "description": "shrinks and paints tap test output",
-  "keywords": [
-    "unit test",
-    "test",
-    "tape",
-    "reporter",
-    "tap",
-    "tt"
-  ],
-  "author": "Hugo Villeneuve",
-  "license": "MIT",
-  "private": false,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hville/untap.git"
-  },
-  "main": "./index.js",
-  "dependencies": {
-  },
-  "devDependencies": {
-    "tape": "4.2.2",
-    "tt": "1.0.3"
-  },
-  "engines": {
-    "node": ">= 0.10.0",
-    "npm": "2.x"
-  },
+	"name": "untap",
+	"version": "0.1.0",
+	"description": "shrinks and paints tap test output",
+	"keywords": [
+		"unit test",
+		"test",
+		"tape",
+		"reporter",
+		"tap",
+		"tt"
+	],
+	"author": "Hugo Villeneuve",
+	"license": "MIT",
+	"private": false,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hville/untap.git"
+	},
+	"main": "./index.js",
+	"dependencies": {
+	},
+	"devDependencies": {
+		"tape": "4.2.2",
+		"tt": "1.0.3"
+	},
+	"engines": {
+		"node": ">= 0.10.0",
+		"npm": "2.x"
+	},
 	"bin": {
-    "untap": "./cli.js"
-  },
-  "scripts": {
-    "test": "npm run tape && npm run tt",
-    "tape": "tape test/tape.js | node ./cli.js",
-    "tt": "tape test/tt.js | node ./cli.js",
-    "all": "tape test/**/*.js | node ./cli.js"
-  }
+		"untap": "./cli.js"
+	},
+	"scripts": {
+		"test": "npm run pipe:tape && npm run file:tt && npm run file:list && npm run dir && npm run fileError && npm run dirError",
+		"pipe:tape": "node test/tape.js | node ./cli.js",
+		"file:tt": "node ./cli.js test/tt.js",
+		"file:list": "node ./cli.js test/tt.js test",
+		"dir": "node ./cli.js test",
+		"fileError": "node ./cli.js test.js",
+		"dirError": "node ./cli.js tests"
+	}
 }
