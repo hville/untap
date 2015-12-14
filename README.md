@@ -31,9 +31,9 @@ The main intended use case is for npm scripts in local installations.
 
 inside the package.json file:
 ```
-	"scripts": {
-		"test": "untap mytestdirectory"
-	}
+"scripts": {
+	"test": "untap mytestdirectory"
+}
 ```
 `untap` supports piping of a test output (e.g. `tape test/mytestfile.js | untap`) or running multiple test files or test directories (e.g. `untap myTestDirectory mytestfile1.js test/mytestfile2.js`)
 

@@ -4,6 +4,7 @@
 var path = require('path')
 var fs = require('fs')
 var child_process = require('child_process')
+var untap = require('./index.js')
 
 var args = process.argv.slice(2)
 
@@ -17,13 +18,17 @@ function runTest () {
 		if (file) files = files.concat(file)
 	})
 	if (files.length) {
-		var childTests = child_process.exec('node ' + files.join(' & node '))
-		formatTest(childTests.stdout)
+		child_process.exec('node ' + files.join(' & node '), function (error, stdout, stderr) {
+			untap.data(stdout)
+			if (stderr) untap.data('Bail out! ' + stderr)
+			if (error !== null) console.log('\nERROR: : ', error)
+			untap.end()
+		})
 	}
 }
 
 function formatTest (tapStream) {
-	var untap = require('./index.js')
+
 	tapStream.on('data', untap.data)
 	tapStream.on('end', untap.end)
 }

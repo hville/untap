@@ -1,6 +1,6 @@
 {
 	"name": "untap",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "shrinks and paints tap test output",
 	"keywords": [
 		"unit test",
@@ -38,6 +38,9 @@
 		"file:list": "node ./cli.js test/tt.js test",
 		"dir": "node ./cli.js test",
 		"fileError": "node ./cli.js test.js",
-		"dirError": "node ./cli.js tests"
+		"dirError": "node ./cli.js tests",
+		"untap": "node ./cli.js",
+		"tt": "node test/tt.js",
+		"err": "node test/err.js"
 	}
 }
