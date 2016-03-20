@@ -37,5 +37,8 @@
 		"untap": "node ./cli.js",
 		"tt": "node test/tt.js",
 		"err": "node test/err.js"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org/"
 	}
 }

@@ -1,4 +1,4 @@
-/*global process */
+/* eslint no-console: 0 */
 
 // mini TAP parser
 var passRE = /^ok/i
