@@ -41,7 +41,7 @@ function formatRow (row) {
 
 function addSummary () {
 	console.log('\nSUMMARY: ' + summary)
-	if (bailOut) throw new Error('Test File Error')
+	if (bailOut) throw Error('Test File Error')
 }
 
 module.exports = {

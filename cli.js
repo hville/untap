@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-/*global process */
+/* global process */
+/* eslint no-console: 0 */
 
 var path = require('path')
 var fs = require('fs')
@@ -28,7 +29,6 @@ function runTest () {
 }
 
 function formatTest (tapStream) {
-
 	tapStream.on('data', untap.data)
 	tapStream.on('end', untap.end)
 }

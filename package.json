@@ -1,7 +1,7 @@
 {
 	"name": "untap",
-	"version": "0.2.0",
-	"description": "shrinks and paints tap test output",
+	"version": "0.2.2",
+	"description": "shrinks tap test output with a touch of coulours",
 	"keywords": [
 		"unit test",
 		"test",
@@ -12,7 +12,6 @@
 	],
 	"author": "Hugo Villeneuve",
 	"license": "MIT",
-	"private": false,
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/hville/untap.git"
@@ -23,10 +22,6 @@
 	"devDependencies": {
 		"tape": "4.2.2",
 		"tt": "1.0.3"
-	},
-	"engines": {
-		"node": ">= 0.10.0",
-		"npm": "2.x"
 	},
 	"bin": {
 		"untap": "./cli.js"
