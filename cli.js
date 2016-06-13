@@ -22,7 +22,7 @@ function runTest () {
 		child_process.exec('node ' + files.join(' & node '), function (error, stdout, stderr) {
 			untap.data(stdout)
 			if (stderr) untap.data('Bail out! ' + stderr)
-			if (error !== null) console.log('\nERROR: : ', error)
+			if (error) console.log('\nERROR: : ', error)
 			untap.end()
 		})
 	}

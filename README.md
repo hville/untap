@@ -27,15 +27,31 @@ You also need a testing library that produces TAP output (eg. tape, tt, tap)
 
 ## Usage
 
-The main intended use case is for npm scripts in local installations.
+`untap` can be used inside javascript test files, inside an npm script or at the command line.
 
+### npm script use
 inside the package.json file:
 ```
 "scripts": {
-	"test": "untap mytestdirectory"
+	"test": "untap mytestdirectory",
+	"test_file": "untap mytestdirectory/mytestfile"
 }
 ```
-`untap` supports piping of a test output (e.g. `tape test/mytestfile.js | untap`) or running multiple test files or test directories (e.g. `untap myTestDirectory mytestfile1.js test/mytestfile2.js`)
+As a lightweight test runner `untap` locates the files and runs them all.
+
+
+### direct use inside a test file
+at the top of the test file:
+```
+require(untap).pipe()
+```
+All `console.log` calls that follow are intercepted and formatted.
+
+
+### command line use
+Directly from the command line:
+`node mytestdirectory/mytestfile | untap`
+`tape mytestdirectory | untap`
 
 
 ## Test

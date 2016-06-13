@@ -1,6 +1,6 @@
 {
 	"name": "untap",
-	"version": "0.2.2",
+	"version": "0.3.0",
 	"description": "shrinks tap test output with a touch of coulours",
 	"keywords": [
 		"unit test",

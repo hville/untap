@@ -16,6 +16,12 @@ var bailOut = false
 var NORM = '\u001b[0m'
 var RED = '\u001b[31m'
 
+module.exports = {
+	data: formatChunk,
+	end: addSummary,
+	pipe: pipe
+}
+
 function formatChunk (chk) {
 	chk.toString().split(lineRE).forEach(formatRow)
 }
@@ -44,7 +50,21 @@ function addSummary () {
 	if (bailOut) throw Error('Test File Error')
 }
 
-module.exports = {
-	data: formatChunk,
-	end: addSummary,
+// Modified from:
+// https://gist.github.com/benbuckman/2758563
+function pipe() {
+	var stdoutWrite = process.stdout.write
+
+	function pipedWrite(str /*, encoding, fd*/) {
+		process.stdout.write = stdoutWrite
+		formatChunk(str)
+		process.stdout.write = pipedWrite
+	}
+	process.stdout.write = pipedWrite
+
+	process.on('exit', function(err) {
+		process.stdout.write = stdoutWrite
+		if (err) console.log('\nERROR CODE: : ', err)
+		addSummary()
+	})
 }
