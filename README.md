@@ -50,10 +50,12 @@ All `console.log` calls that follow are intercepted and formatted.
 
 ### command line use
 Directly from the command line:
-`> node mytestdirectory/mytestfile | untap`
-
-`> tape mytestdirectory | untap`
-
+```
+> node mytestdirectory/mytestfile | untap
+```
+```
+> tape mytestdirectory | untap
+```
 
 ## Test
 
