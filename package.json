@@ -1,6 +1,6 @@
 {
 	"name": "untap",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "shrinks tap test output with a touch of coulours",
 	"keywords": [
 		"unit test",
@@ -35,8 +35,7 @@
 		"fileError": "node ./cli.js test.js",
 		"dirError": "node ./cli.js tests",
 		"untap": "node ./cli.js",
-		"tt": "node test/tt.js",
-		"err": "node test/err.js"
+		"tt": "node test/tt.js"
 	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org/"

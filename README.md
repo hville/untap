@@ -1,15 +1,14 @@
 # untap
 
-1. [Introduction](#introduction)
-1. [Installation](#installation)
-1. [Usage](#usage)
-1. [Test](#test)
-1. [License](#license)
+shrinks and paints TAP test output
+
+![ScreenCap](./untap.gif)
+
+• [Introduction](#introduction) • [Installation](#installation) • [Usage](#usage) • [Test](#test) • [License](#license) •
 
 
 ## Introduction
 
-shrinks and paints TAP test output
 * Strips out the good news (ok...) and most of the extra line feeds
 * Highlights the bad news in red (not ok...)
 * Adds a one-line summary showing all passed, failed and skipped tests (eg. Summary: ..sx..x.)
